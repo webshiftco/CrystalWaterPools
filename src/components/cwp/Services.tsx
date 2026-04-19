@@ -82,7 +82,7 @@ export const Services = () => {
                 </div>
               </div>
               <div className="p-7">
-                <h3 className="font-display text-2xl font-semibold text-foreground">{s.title}</h3>
+                <h3 className="font-display text-2xl font-semibold text-foreground flex items-center gap-2"><span aria-hidden>{s.emoji}</span>{s.title}</h3>
                 <p className="mt-2 text-muted-foreground">{s.desc}</p>
               </div>
             </motion.article>
