@@ -9,17 +9,17 @@ import slide3 from "@/assets/cwp/slide3.jpg";
 const slides = [
   {
     image: slide1,
-    eyebrow: "Hello, summer 👋",
+    eyebrow: "Atlanta Locals Since 2001",
     title: "Your backyard.\nYour beach club.",
   },
   {
     image: slide2,
-    eyebrow: "Atlanta locals since 2001",
+    eyebrow: "Atlanta Locals Since 2001",
     title: "Two decades of\nsplashy good times.",
   },
   {
     image: slide3,
-    eyebrow: "Dream it. Splash in it.",
+    eyebrow: "Atlanta Locals Since 2001",
     title: "Pools as bright\nas your weekends.",
   },
 ];
