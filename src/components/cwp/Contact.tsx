@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send, Sun } from "lucide-react";
+import { MapPin, Phone, Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -98,28 +98,28 @@ export const Contact = () => {
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <Label htmlFor="name">Your name *</Label>
-              <Input id="name" required className="mt-2 rounded-xl h-11" placeholder="Sunny Smith" />
+              <Label htmlFor="name">Name *</Label>
+              <Input id="name" required className="mt-2 rounded-xl h-11" placeholder="Your full name" />
             </div>
             <div>
-              <Label htmlFor="zip">Zip code *</Label>
+              <Label htmlFor="zip">Zip Code *</Label>
               <Input id="zip" required className="mt-2 rounded-xl h-11" placeholder="30041" />
             </div>
             <div className="sm:col-span-2">
               <Label htmlFor="address">Address *</Label>
-              <Input id="address" required className="mt-2 rounded-xl h-11" placeholder="123 Backyard Lane" />
+              <Input id="address" required className="mt-2 rounded-xl h-11" placeholder="Street address" />
             </div>
             <div>
               <Label htmlFor="email">Email *</Label>
-              <Input id="email" type="email" required className="mt-2 rounded-xl h-11" placeholder="you@summer.com" />
+              <Input id="email" type="email" required className="mt-2 rounded-xl h-11" placeholder="name@example.com" />
             </div>
             <div>
               <Label htmlFor="phone">Phone *</Label>
               <Input id="phone" type="tel" required className="mt-2 rounded-xl h-11" placeholder="(470) 555-0123" />
             </div>
             <div className="sm:col-span-2">
-              <Label htmlFor="message">Tell us about your dream pool *</Label>
-              <Textarea id="message" rows={4} required className="mt-2 rounded-xl" placeholder="I'm imagining a tropical oasis with..." />
+              <Label htmlFor="message">Project Details *</Label>
+              <Textarea id="message" rows={4} required className="mt-2 rounded-xl" placeholder="Tell us about your project..." />
             </div>
           </div>
           <Button
@@ -129,11 +129,10 @@ export const Contact = () => {
             disabled={submitting}
           >
             {submitting ? (
-              "Sending sunshine..."
+              "Sending..."
             ) : (
               <>
-                <Sun className="mr-2 h-5 w-5" />
-                Send My Request
+                Submit Request
                 <Send className="ml-2 h-4 w-4" />
               </>
             )}
