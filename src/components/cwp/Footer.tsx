@@ -37,7 +37,8 @@ export const Footer = () => {
             href="mailto:crystalwaterpoolsinga@gmail.com"
             className="flex items-center gap-3 text-background/80 hover:text-accent transition break-all"
           >
-            <Mail className="h-4 w-4" /> crystalwaterpoolsinga@gmail.com
+            <Mail className="h-4 w-4" />
+            <span>crystalwaterpoolsinga@gmail.com</span>
           </a>
         </div>
       </div>
