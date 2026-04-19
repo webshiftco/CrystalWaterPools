@@ -15,8 +15,8 @@ export const Contact = () => {
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
-      toast.success("Request received! 🌞", {
-        description: "Thanks! We'll be in touch shortly to schedule your free estimate.",
+      toast.success("Request received", {
+        description: "Thank you. Our team will be in touch shortly to schedule your estimate.",
       });
       (e.target as HTMLFormElement).reset();
     }, 700);
