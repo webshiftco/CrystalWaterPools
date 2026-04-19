@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, Sun } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/cwp/logo.png";
 import { Button } from "@/components/ui/button";
 
@@ -68,10 +68,7 @@ export const Navbar = () => {
             size="sm"
             className="rounded-full gradient-sunset text-accent-foreground hover:opacity-90 shadow-glow font-semibold"
           >
-            <a href="#contact">
-              <Sun className="mr-1 h-4 w-4" />
-              Free Estimate
-            </a>
+            <a href="#contact">Free Estimate</a>
           </Button>
         </div>
 
