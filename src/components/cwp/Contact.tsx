@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send, Sun } from "lucide-react";
+import { MapPin, Phone, Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,8 +15,8 @@ export const Contact = () => {
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
-      toast.success("Request received! 🌞", {
-        description: "Thanks! We'll be in touch shortly to schedule your free estimate.",
+      toast.success("Request received", {
+        description: "Thank you. Our team will be in touch shortly to schedule your estimate.",
       });
       (e.target as HTMLFormElement).reset();
     }, 700);
@@ -37,15 +37,15 @@ export const Contact = () => {
           transition={{ duration: 0.7 }}
         >
           <span className="inline-block rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-foreground">
-            🌴 Let's chat
+            Request an Estimate
           </span>
           <h2 className="mt-5 font-display text-4xl tracking-tight md:text-6xl">
-            Free estimate.{" "}
-            <span className="text-gradient-sunset">Zero pressure.</span>
+            Free, professional,{" "}
+            <span className="text-gradient-sunset">and fair.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground max-w-md">
-            Tell us a bit about your dream backyard and we'll bring the
-            sunshine. Most estimates include a friendly site visit.
+            Most estimates require an in-person site visit. Share a few
+            details about your project and our team will be in touch.
           </p>
 
           <ul className="mt-10 space-y-5">
@@ -54,7 +54,7 @@ export const Contact = () => {
                 <MapPin className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-semibold text-foreground">Visit us</p>
+                <p className="font-semibold text-foreground">Visit Us</p>
                 <p className="text-muted-foreground">
                   1255 Peachtree Pkwy STE 4203, Cumming, GA 30041
                 </p>
@@ -65,7 +65,7 @@ export const Contact = () => {
                 <Phone className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-semibold text-foreground">Call us</p>
+                <p className="font-semibold text-foreground">Call Us</p>
                 <a href="tel:4702815693" className="text-muted-foreground hover:text-primary text-lg font-medium">
                   470.281.5693
                 </a>
@@ -76,7 +76,7 @@ export const Contact = () => {
                 <Mail className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-semibold text-foreground">Email us</p>
+                <p className="font-semibold text-foreground">Email Us</p>
                 <a
                   href="mailto:crystalwaterpoolsinga@gmail.com"
                   className="text-muted-foreground hover:text-primary break-all"
@@ -98,28 +98,28 @@ export const Contact = () => {
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <Label htmlFor="name">Your name *</Label>
-              <Input id="name" required className="mt-2 rounded-xl h-11" placeholder="Sunny Smith" />
+              <Label htmlFor="name">Name *</Label>
+              <Input id="name" required className="mt-2 rounded-xl h-11" placeholder="Your full name" />
             </div>
             <div>
-              <Label htmlFor="zip">Zip code *</Label>
+              <Label htmlFor="zip">Zip Code *</Label>
               <Input id="zip" required className="mt-2 rounded-xl h-11" placeholder="30041" />
             </div>
             <div className="sm:col-span-2">
               <Label htmlFor="address">Address *</Label>
-              <Input id="address" required className="mt-2 rounded-xl h-11" placeholder="123 Backyard Lane" />
+              <Input id="address" required className="mt-2 rounded-xl h-11" placeholder="Street address" />
             </div>
             <div>
               <Label htmlFor="email">Email *</Label>
-              <Input id="email" type="email" required className="mt-2 rounded-xl h-11" placeholder="you@summer.com" />
+              <Input id="email" type="email" required className="mt-2 rounded-xl h-11" placeholder="name@example.com" />
             </div>
             <div>
               <Label htmlFor="phone">Phone *</Label>
               <Input id="phone" type="tel" required className="mt-2 rounded-xl h-11" placeholder="(470) 555-0123" />
             </div>
             <div className="sm:col-span-2">
-              <Label htmlFor="message">Tell us about your dream pool *</Label>
-              <Textarea id="message" rows={4} required className="mt-2 rounded-xl" placeholder="I'm imagining a tropical oasis with..." />
+              <Label htmlFor="message">Project Details *</Label>
+              <Textarea id="message" rows={4} required className="mt-2 rounded-xl" placeholder="Tell us about your project..." />
             </div>
           </div>
           <Button
@@ -129,11 +129,10 @@ export const Contact = () => {
             disabled={submitting}
           >
             {submitting ? (
-              "Sending sunshine..."
+              "Sending..."
             ) : (
               <>
-                <Sun className="mr-2 h-5 w-5" />
-                Send My Request
+                Submit Request
                 <Send className="ml-2 h-4 w-4" />
               </>
             )}

@@ -7,12 +7,12 @@ import s13 from "@/assets/cwp/s13.jpg";
 import s14 from "@/assets/cwp/s14.jpg";
 
 const services = [
-  { img: s1, title: "Permits, sorted", desc: "Boring paperwork? Ours. Backyard fun? Yours.", emoji: "📋" },
-  { img: s5, title: "Pool Layout", desc: "We map the perfect spot for your splash zone.", emoji: "📐" },
-  { img: s11, title: "Excavation", desc: "Carefully dug, dirt-free attitude included.", emoji: "🚜" },
-  { img: s12, title: "Steel Reinforcing", desc: "Built rock-solid for decades of cannonballs.", emoji: "🧱" },
-  { img: s13, title: "Pool Plumbing", desc: "Schedule 40 PVC for crystal-clear flow.", emoji: "🔧" },
-  { img: s14, title: "Shotcrete & Tile", desc: "Pick from glossy ceramics, glass, natural stone.", emoji: "🎨" },
+  { img: s1, title: "Permit Management", desc: "We manage all paperwork and approvals on your behalf." },
+  { img: s5, title: "Pool Layout & Design", desc: "We plan placement, elevation, and finish details with you." },
+  { img: s11, title: "Excavation", desc: "Our experienced crews prepare each site with precision." },
+  { img: s12, title: "Steel Reinforcement", desc: "Reinforced throughout for a structure built to last." },
+  { img: s13, title: "Plumbing & Filtration", desc: "Constructed with durable schedule 40 PVC throughout." },
+  { img: s14, title: "Shotcrete & Tile", desc: "A wide selection of ceramic, glass, and natural stone tile." },
 ];
 
 export const Services = () => {
@@ -27,16 +27,16 @@ export const Services = () => {
           className="max-w-2xl"
         >
           <span className="inline-block rounded-full bg-mint px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
-            🌊 What we do
+            Construction Services
           </span>
           <h2 className="mt-5 font-display text-4xl tracking-tight md:text-6xl">
             From permit to{" "}
-            <span className="text-gradient-sunset">first splash</span>{" "}
-            — we've got it.
+            <span className="text-gradient-sunset">final inspection</span>
+            — we handle every step.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Every step handled with the kind of care that turns a backyard
-            into your favorite vacation spot.
+            We design and build pools tailored to your specifications,
+            managing every stage of the construction process.
           </p>
         </motion.div>
 
@@ -59,13 +59,13 @@ export const Services = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="inline-flex items-center justify-center h-12 w-12 rounded-2xl bg-white text-2xl shadow-soft">
-                    {s.emoji}
+                  <span className="inline-flex items-center justify-center h-10 px-3 rounded-full bg-white text-xs font-bold uppercase tracking-wider text-foreground shadow-soft">
+                    Step {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
                 <div className="absolute bottom-4 right-4">
                   <span className="inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent-foreground">
-                    Step {String(i + 1).padStart(2, "0")}
+                    {String(i + 1).padStart(2, "0")} of 06
                   </span>
                 </div>
               </div>

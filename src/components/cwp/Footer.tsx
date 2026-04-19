@@ -1,5 +1,5 @@
 import logo from "@/assets/cwp/logo.png";
-import { MapPin, Phone, Mail, Heart } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -10,8 +10,8 @@ export const Footer = () => {
             <img src={logo} alt="Crystal Water Pools" className="h-12 w-auto" />
           </div>
           <p className="mt-5 text-background/70 max-w-xs">
-            Designing and building joyfully custom backyard pools across
-            Atlanta since 2001.
+            Designing and building custom backyard pools across the
+            greater Atlanta area since 2001.
           </p>
         </div>
 
@@ -41,9 +41,7 @@ export const Footer = () => {
       <div className="border-t border-background/10">
         <div className="container py-6 text-sm text-background/60 flex flex-col sm:flex-row sm:justify-between gap-2 items-center">
           <p>© {new Date().getFullYear()} Crystal Water Pools. All Rights Reserved.</p>
-          <p className="flex items-center gap-1.5">
-            Made with <Heart className="h-3.5 w-3.5 fill-coral text-coral" /> for sunny Atlanta
-          </p>
+          <p>Serving the greater Atlanta area since 2001.</p>
         </div>
       </div>
     </footer>

@@ -30,10 +30,10 @@ export const Testimonials = () => {
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block rounded-full bg-accent/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
-            💬 Happy neighbors
+            Client Testimonials
           </span>
           <h2 className="mt-5 font-display text-4xl tracking-tight md:text-6xl">
-            Real folks. <span className="text-gradient-sunset">Real splashes.</span>
+            What our <span className="text-gradient-sunset">clients say.</span>
           </h2>
         </div>
 
