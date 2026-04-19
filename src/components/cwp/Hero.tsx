@@ -53,11 +53,6 @@ export const Hero = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Floating sun */}
-      <div className="pointer-events-none absolute right-[8%] top-[18%] z-10 hidden md:block">
-        <div className="animate-float-slow h-24 w-24 rounded-full gradient-sunset shadow-glow opacity-90" />
-      </div>
-
       {/* Content */}
       <div className="relative z-10 container flex min-h-[100svh] flex-col justify-end pb-32 md:justify-center md:pb-0 md:pt-28">
         <motion.div
