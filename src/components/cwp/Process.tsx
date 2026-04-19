@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { MessageSquare, HardHat, PartyPopper } from "lucide-react";
+import { MessageSquare, HardHat, Hammer } from "lucide-react";
 
 const steps = [
-  { n: "01", icon: MessageSquare, title: "Tell us your dream", desc: "Share your idea — we'll send a free estimate." },
-  { n: "02", icon: HardHat, title: "Plan it together", desc: "Our certified tech walks the site with you." },
-  { n: "03", icon: PartyPopper, title: "Cannonball time!", desc: "Your backyard paradise comes to life." },
+  { n: "01", icon: MessageSquare, title: "Submit your request", desc: "Tell us about your project and request a complimentary estimate." },
+  { n: "02", icon: HardHat, title: "Meet our certified technician", desc: "We will visit your site and walk through the plan with you." },
+  { n: "03", icon: Hammer, title: "Construction begins", desc: "Our team brings your custom design to life from start to finish." },
 ];
 
 export const Process = () => {
@@ -17,14 +17,14 @@ export const Process = () => {
       <div className="container relative">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-block rounded-full bg-white/20 backdrop-blur-md px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
-            🌞 How it works
+            Our Process
           </span>
           <h2 className="mt-5 font-display text-4xl tracking-tight md:text-6xl drop-shadow">
-            Three steps to a happier summer.
+            Three simple steps to your custom pool.
           </h2>
           <p className="mt-5 text-lg text-white/85">
-            Looking for builders who'll turn your backyard into a private paradise?
-            You just found them.
+            If you are searching for an experienced pool builder to transform
+            your backyard, Crystal Water Pools delivers exceptional results.
           </p>
         </div>
 

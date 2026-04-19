@@ -33,7 +33,7 @@ export const Testimonials = () => {
             💬 Happy neighbors
           </span>
           <h2 className="mt-5 font-display text-4xl tracking-tight md:text-6xl">
-            Real folks. <span className="text-gradient-sunset">Real splashes.</span>
+            What our <span className="text-gradient-sunset">clients say.</span>
           </h2>
         </div>
 

@@ -37,15 +37,15 @@ export const Contact = () => {
           transition={{ duration: 0.7 }}
         >
           <span className="inline-block rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-foreground">
-            🌴 Let's chat
+            Request an Estimate
           </span>
           <h2 className="mt-5 font-display text-4xl tracking-tight md:text-6xl">
-            Free estimate.{" "}
-            <span className="text-gradient-sunset">Zero pressure.</span>
+            Free, professional,{" "}
+            <span className="text-gradient-sunset">and fair.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground max-w-md">
-            Tell us a bit about your dream backyard and we'll bring the
-            sunshine. Most estimates include a friendly site visit.
+            Most estimates require an in-person site visit. Share a few
+            details about your project and our team will be in touch.
           </p>
 
           <ul className="mt-10 space-y-5">
@@ -54,7 +54,7 @@ export const Contact = () => {
                 <MapPin className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-semibold text-foreground">Visit us</p>
+                <p className="font-semibold text-foreground">Visit Us</p>
                 <p className="text-muted-foreground">
                   1255 Peachtree Pkwy STE 4203, Cumming, GA 30041
                 </p>
@@ -65,7 +65,7 @@ export const Contact = () => {
                 <Phone className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-semibold text-foreground">Call us</p>
+                <p className="font-semibold text-foreground">Call Us</p>
                 <a href="tel:4702815693" className="text-muted-foreground hover:text-primary text-lg font-medium">
                   470.281.5693
                 </a>
@@ -76,7 +76,7 @@ export const Contact = () => {
                 <Mail className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-semibold text-foreground">Email us</p>
+                <p className="font-semibold text-foreground">Email Us</p>
                 <a
                   href="mailto:crystalwaterpoolsinga@gmail.com"
                   className="text-muted-foreground hover:text-primary break-all"

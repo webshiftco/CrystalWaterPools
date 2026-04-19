@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Droplets, Sparkles, Clock, ShieldCheck } from "lucide-react";
 
 const items = [
-  { icon: Droplets, title: "Designs you'll love", desc: "A bright gallery of styles to make your own.", color: "bg-mint" },
-  { icon: Sparkles, title: "Hassle-free", desc: "We handle every detail. You handle the floaties.", color: "bg-sand" },
-  { icon: Clock, title: "On time, every time", desc: "We honor our schedule and your summer.", color: "bg-accent/40" },
-  { icon: ShieldCheck, title: "Trusted by neighbors", desc: "Hundreds of happy backyards across Atlanta.", color: "bg-coral/30" },
+  { icon: Droplets, title: "Variety of Designs", desc: "An extensive portfolio of elegant pool styles to choose from.", color: "bg-mint" },
+  { icon: Sparkles, title: "Hassle-Free Service", desc: "We manage every detail, from permits to final walkthrough.", color: "bg-sand" },
+  { icon: Clock, title: "On Schedule", desc: "We honor our timelines and deliver on what we promise.", color: "bg-accent/40" },
+  { icon: ShieldCheck, title: "Trusted Reputation", desc: "Built on satisfied customers and consistent five-star reviews.", color: "bg-coral/30" },
 ];
 
 export const WhyUs = () => {
@@ -21,15 +21,15 @@ export const WhyUs = () => {
       <div className="container relative">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-block rounded-full bg-coral/20 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
-            ✨ Why Crystal Water
+            Why Crystal Water Pools
           </span>
           <h2 className="mt-5 font-display text-4xl tracking-tight md:text-6xl">
-            Built with{" "}
-            <span className="text-gradient-lagoon">sunshine</span>{" "}
-            and care.
+            Crafted with care.{" "}
+            <span className="text-gradient-lagoon">Built to last.</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            We've spent two decades making summers a little more fun for Atlanta families.
+            For more than two decades, we have served Atlanta-area
+            homeowners with quality construction and dependable service.
           </p>
         </div>
 
