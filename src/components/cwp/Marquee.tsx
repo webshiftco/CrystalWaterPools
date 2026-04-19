@@ -1,12 +1,12 @@
 const items = [
-  "🌞 Sunny days",
-  "🏊 Cannonballs welcome",
-  "🌴 Backyard vacations",
-  "🍹 Poolside cocktails",
-  "🐠 Crystal-clear water",
-  "✨ Custom designs",
-  "🦩 Flamingo floaties",
-  "🎉 Endless summers",
+  "Custom Pool Design",
+  "Permit Management",
+  "Excavation & Site Prep",
+  "Steel & Plumbing",
+  "Shotcrete & Tile",
+  "Decking & Hardscape",
+  "Salt Systems Included",
+  "20+ Years in Atlanta",
 ];
 
 export const Marquee = () => {
