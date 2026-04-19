@@ -1,12 +1,12 @@
 const items = [
-  "Custom Pool Design",
-  "Permit Management",
-  "Excavation & Site Prep",
-  "Steel & Plumbing",
-  "Shotcrete & Tile",
-  "Decking & Hardscape",
-  "Salt Systems Included",
-  "20+ Years in Atlanta",
+  { text: "Custom Pool Design", emoji: "🏊" },
+  { text: "Permit Management", emoji: "📋" },
+  { text: "Excavation & Site Prep", emoji: "🚜" },
+  { text: "Steel & Plumbing", emoji: "🔧" },
+  { text: "Shotcrete & Tile", emoji: "🧱" },
+  { text: "Decking & Hardscape", emoji: "🪵" },
+  { text: "Salt Systems Included", emoji: "🧂" },
+  { text: "20+ Years in Atlanta", emoji: "🌟" },
 ];
 
 export const Marquee = () => {
