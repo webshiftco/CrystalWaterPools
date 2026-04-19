@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Sun, Star, Sparkles } from "lucide-react";
+import { ArrowRight, Star, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import slide1 from "@/assets/cwp/slide1.jpg";
 import slide2 from "@/assets/cwp/slide2.jpg";
@@ -81,7 +81,6 @@ export const Hero = () => {
               className="rounded-full gradient-sunset text-accent-foreground hover:opacity-90 shadow-glow font-semibold text-base h-12 px-7"
             >
               <a href="#contact">
-                <Sun className="mr-1 h-5 w-5" />
                 Get Your Free Estimate
                 <ArrowRight className="ml-1 h-4 w-4" />
               </a>

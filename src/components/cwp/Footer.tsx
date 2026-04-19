@@ -4,11 +4,6 @@ import { MapPin, Phone, Mail, Heart } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="bg-foreground text-background relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 opacity-10">
-        <div className="absolute right-10 top-10 text-9xl">🌴</div>
-        <div className="absolute left-10 bottom-10 text-8xl">🌞</div>
-      </div>
-
       <div className="container relative py-16 grid gap-10 md:grid-cols-3">
         <div>
           <div className="inline-block rounded-2xl bg-white p-3">
