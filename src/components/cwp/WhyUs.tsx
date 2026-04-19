@@ -15,8 +15,7 @@ export const WhyUs = () => {
       <div className="pointer-events-none absolute inset-0 -z-0 opacity-60">
         <div className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl animate-float-slow" />
         <div className="absolute -right-10 bottom-20 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
-        <div className="absolute right-[15%] top-10 text-7xl animate-wiggle opacity-60">🦩</div>
-        <div className="absolute left-[10%] bottom-20 text-6xl animate-float-slow opacity-50">🌴</div>
+      
       </div>
 
       <div className="container relative">

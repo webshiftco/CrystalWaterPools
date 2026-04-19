@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Sun, Star, Sparkles } from "lucide-react";
+import { ArrowRight, Star, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import slide1 from "@/assets/cwp/slide1.jpg";
 import slide2 from "@/assets/cwp/slide2.jpg";
@@ -9,17 +9,17 @@ import slide3 from "@/assets/cwp/slide3.jpg";
 const slides = [
   {
     image: slide1,
-    eyebrow: "Hello, summer 👋",
+    eyebrow: "Atlanta Locals Since 2001",
     title: "Your backyard.\nYour beach club.",
   },
   {
     image: slide2,
-    eyebrow: "Atlanta locals since 2001",
+    eyebrow: "Atlanta Locals Since 2001",
     title: "Two decades of\nsplashy good times.",
   },
   {
     image: slide3,
-    eyebrow: "Dream it. Splash in it.",
+    eyebrow: "Atlanta Locals Since 2001",
     title: "Pools as bright\nas your weekends.",
   },
 ];
@@ -81,7 +81,6 @@ export const Hero = () => {
               className="rounded-full gradient-sunset text-accent-foreground hover:opacity-90 shadow-glow font-semibold text-base h-12 px-7"
             >
               <a href="#contact">
-                <Sun className="mr-1 h-5 w-5" />
                 Get Your Free Estimate
                 <ArrowRight className="ml-1 h-4 w-4" />
               </a>
