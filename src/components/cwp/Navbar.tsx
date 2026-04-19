@@ -32,12 +32,9 @@ export const Navbar = () => {
     >
       <nav className="container flex items-center justify-between py-4">
         <a href="#top" className="flex items-center gap-3">
-          <div className="rounded-full bg-white p-1.5 shadow-soft">
-            <img src={logo} alt="Crystal Water Pools logo" className="h-9 w-auto" />
+          <div className="rounded-full bg-primary px-4 py-2 shadow-soft ring-1 ring-white/30">
+            <img src={logo} alt="Crystal Water Pools logo" className="h-9 w-auto brightness-0 invert" />
           </div>
-          <span className={`hidden sm:block font-display text-lg font-semibold ${scrolled ? "text-foreground" : "text-white drop-shadow"}`}>
-            Crystal Water Pools
-          </span>
         </a>
 
         <div className="hidden lg:flex items-center gap-1">
