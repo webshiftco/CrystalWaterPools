@@ -16,7 +16,10 @@ export const Marquee = () => {
       <div className="flex w-max animate-marquee gap-12 whitespace-nowrap font-display text-xl font-semibold text-accent-foreground">
         {loop.map((t, i) => (
           <span key={i} className="flex items-center gap-12">
-            {t}
+            <span className="flex items-center gap-3">
+              <span aria-hidden>{t.emoji}</span>
+              {t.text}
+            </span>
             <span className="text-accent-foreground/40">✦</span>
           </span>
         ))}
