@@ -5,6 +5,12 @@ import s11 from "@/assets/cwp/s11.jpg";
 import s12 from "@/assets/cwp/s12.jpg";
 import s13 from "@/assets/cwp/s13.jpg";
 import s14 from "@/assets/cwp/s14.jpg";
+import src12 from "@/assets/cwp/src12.jpg";
+import src13 from "@/assets/cwp/src13.jpg";
+import src14 from "@/assets/cwp/src14.jpg";
+import src6 from "@/assets/cwp/src6.jpg";
+import src7 from "@/assets/cwp/src7.jpg";
+import src8 from "@/assets/cwp/src8.jpg";
 
 const services = [
   { img: s1, title: "Permit Management", desc: "We manage all paperwork and approvals on your behalf." },
@@ -12,7 +18,13 @@ const services = [
   { img: s11, title: "Excavation", desc: "Our experienced crews prepare each site with precision." },
   { img: s12, title: "Steel Reinforcement", desc: "Reinforced throughout for a structure built to last." },
   { img: s13, title: "Plumbing & Filtration", desc: "Constructed with durable schedule 40 PVC throughout." },
-  { img: s14, title: "Shotcrete & Tile", desc: "A wide selection of ceramic, glass, and natural stone tile." },
+  { img: s14, title: "Shotcrete Application", desc: "A structural shell sprayed and shaped for long-term durability." },
+  { img: src12, title: "Tile & Coping", desc: "Precision-set tile and coping create a refined, finished edge." },
+  { img: src13, title: "Equipment Installation", desc: "Pumps, filters, and heaters configured for efficient operation." },
+  { img: src14, title: "Electrical Installation", desc: "All electrical components installed to current safety standards." },
+  { img: src6, title: "Drainage Installation", desc: "Proper drainage protects the pool deck and surrounding landscape." },
+  { img: src7, title: "Decking Construction", desc: "Custom decking built to complement the pool and your property." },
+  { img: src8, title: "Plaster or Pebble Finish", desc: "Premium interior finishes applied for a smooth, lasting surface." },
 ];
 
 export const Services = () => {
