@@ -77,7 +77,7 @@ export const Services = () => {
                 </div>
                 <div className="absolute bottom-4 right-4">
                   <span className="inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent-foreground">
-                    {String(i + 1).padStart(2, "0")} of 06
+                    {String(i + 1).padStart(2, "0")} of {String(services.length).padStart(2, "0")}
                   </span>
                 </div>
               </div>
