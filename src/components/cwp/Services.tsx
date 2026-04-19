@@ -11,6 +11,8 @@ import src14 from "@/assets/cwp/src14.jpg";
 import src6 from "@/assets/cwp/src6.jpg";
 import src7 from "@/assets/cwp/src7.jpg";
 import src8 from "@/assets/cwp/src8.jpg";
+import src9 from "@/assets/cwp/src9.jpg";
+import src10 from "@/assets/cwp/src10.jpg";
 
 const services = [
   { img: s1, title: "Permit Management", desc: "We manage all paperwork and approvals on your behalf.", emoji: "📋" },
@@ -25,6 +27,8 @@ const services = [
   { img: src6, title: "Drainage Installation", desc: "Proper drainage protects the pool deck and surrounding landscape.", emoji: "💧" },
   { img: src7, title: "Decking Construction", desc: "Custom decking built to complement the pool and your property.", emoji: "🪵" },
   { img: src8, title: "Plaster or Pebble Finish", desc: "Premium interior finishes applied for a smooth, lasting surface.", emoji: "✨" },
+  { img: src9, title: "Pool Start-Up", desc: "We start the pool and walk you through ongoing care and operation.", emoji: "🚀" },
+  { img: src10, title: "Landscape & Fencing", desc: "Final landscaping and fencing complete your private retreat.", emoji: "🌿" },
 ];
 
 export const Services = () => {
