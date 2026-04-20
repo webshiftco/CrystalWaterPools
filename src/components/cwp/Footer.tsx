@@ -1,4 +1,4 @@
-import logo from "@/assets/cwp/logo.png";
+import logo from "@/assets/cwp/logo-footer.png";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 export const Footer = () => {
@@ -6,9 +6,7 @@ export const Footer = () => {
     <footer className="bg-foreground text-background relative overflow-hidden">
       <div className="container relative py-16 grid gap-10 md:grid-cols-3">
         <div>
-          <div className="inline-block rounded-2xl bg-white p-3">
-            <img src={logo} alt="Crystal Water Pools" className="h-12 w-auto" />
-          </div>
+          <img src={logo} alt="Crystal Water Pools" className="h-16 w-auto" />
           <p className="mt-5 text-background/70 max-w-xs">
             Designing and building custom backyard pools across the
             greater Atlanta area since 2001.
