@@ -75,10 +75,7 @@ export const Services = () => {
           {services.map((s, i) => (
             <motion.article
               key={s.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
+              {...anim(i * 0.06)}
               className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-card shadow-soft border border-border hover:-translate-y-2 hover:shadow-pool transition-all duration-500"
             >
               <div className="relative h-32 sm:h-56 overflow-hidden">
