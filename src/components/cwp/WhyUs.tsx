@@ -10,6 +10,7 @@ const items = [
 ];
 
 export const WhyUs = () => {
+  const isMobile = useIsMobile();
   return (
     <section id="why" className="relative overflow-hidden py-24 md:py-32 gradient-cream">
       {/* Floating pool toys */}

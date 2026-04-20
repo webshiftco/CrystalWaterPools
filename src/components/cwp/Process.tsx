@@ -9,6 +9,7 @@ const steps = [
 ];
 
 export const Process = () => {
+  const isMobile = useIsMobile();
   return (
     <section id="process" className="py-24 md:py-32 gradient-lagoon text-primary-foreground relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 opacity-30">
