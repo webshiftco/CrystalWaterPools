@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Droplets, Sparkles, Clock, ShieldCheck } from "lucide-react";
 
 const items = [
@@ -9,6 +10,7 @@ const items = [
 ];
 
 export const WhyUs = () => {
+  const isMobile = useIsMobile();
   return (
     <section id="why" className="relative overflow-hidden py-24 md:py-32 gradient-cream">
       {/* Floating pool toys */}
@@ -37,10 +39,14 @@ export const WhyUs = () => {
           {items.map((it, i) => (
             <motion.div
               key={it.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
+              {...(isMobile
+                ? {}
+                : {
+                    initial: { opacity: 0, y: 30 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true },
+                    transition: { duration: 0.6, delay: i * 0.08 },
+                  })}
               className="group relative rounded-3xl bg-card p-7 shadow-soft border border-border hover:-translate-y-2 hover:shadow-pool transition-all duration-500"
             >
               <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl ${it.color} text-foreground`}>

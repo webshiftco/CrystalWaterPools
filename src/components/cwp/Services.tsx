@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import s1 from "@/assets/cwp/s1.jpg";
 import s5 from "@/assets/cwp/s5.jpg";
 import s11 from "@/assets/cwp/s11.jpg";
@@ -32,14 +33,28 @@ const services = [
 ];
 
 export const Services = () => {
+  const isMobile = useIsMobile();
+  const anim = (delay = 0) =>
+    isMobile
+      ? {}
+      : {
+          initial: { opacity: 0, y: 30 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: "-80px" },
+          transition: { duration: 0.6, delay },
+        };
   return (
     <section id="services" className="relative py-24 md:py-32">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
+          {...(isMobile
+            ? {}
+            : {
+                initial: { opacity: 0, y: 24 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true, margin: "-100px" },
+                transition: { duration: 0.7 },
+              })}
           className="max-w-2xl"
         >
           <span className="inline-block rounded-full bg-mint px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
@@ -60,10 +75,7 @@ export const Services = () => {
           {services.map((s, i) => (
             <motion.article
               key={s.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
+              {...anim(i * 0.06)}
               className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-card shadow-soft border border-border hover:-translate-y-2 hover:shadow-pool transition-all duration-500"
             >
               <div className="relative h-32 sm:h-56 overflow-hidden">

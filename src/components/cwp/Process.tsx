@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { MessageSquare, HardHat, Hammer } from "lucide-react";
 
 const steps = [
@@ -8,6 +9,7 @@ const steps = [
 ];
 
 export const Process = () => {
+  const isMobile = useIsMobile();
   return (
     <section id="process" className="py-24 md:py-32 gradient-lagoon text-primary-foreground relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 opacity-30">
@@ -32,10 +34,14 @@ export const Process = () => {
           {steps.map((s, i) => (
             <motion.div
               key={s.n}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
+              {...(isMobile
+                ? {}
+                : {
+                    initial: { opacity: 0, y: 30 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true },
+                    transition: { duration: 0.6, delay: i * 0.12 },
+                  })}
               className="relative rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-8 hover:bg-white/15 transition-all"
             >
               <div className="flex items-start justify-between">
