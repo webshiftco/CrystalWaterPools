@@ -35,7 +35,12 @@ export const Process = () => {
             <motion.div
               key={s.n}
               {...(isMobile
-                ? { initial: false as const }
+                ? {
+                    initial: { opacity: 0 },
+                    whileInView: { opacity: 1 },
+                    viewport: { once: true, margin: "-40px" },
+                    transition: { duration: 0.4, delay: i * 0.08 },
+                  }
                 : {
                     initial: { opacity: 0, y: 30 },
                     whileInView: { opacity: 1, y: 0 },
