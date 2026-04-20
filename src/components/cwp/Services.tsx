@@ -47,10 +47,14 @@ export const Services = () => {
     <section id="services" className="relative py-24 md:py-32">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
+          {...(isMobile
+            ? {}
+            : {
+                initial: { opacity: 0, y: 24 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true, margin: "-100px" },
+                transition: { duration: 0.7 },
+              })}
           className="max-w-2xl"
         >
           <span className="inline-block rounded-full bg-mint px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground">
