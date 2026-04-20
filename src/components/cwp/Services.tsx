@@ -33,6 +33,16 @@ const services = [
 ];
 
 export const Services = () => {
+  const isMobile = useIsMobile();
+  const anim = (delay = 0) =>
+    isMobile
+      ? {}
+      : {
+          initial: { opacity: 0, y: 30 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: "-80px" },
+          transition: { duration: 0.6, delay },
+        };
   return (
     <section id="services" className="relative py-24 md:py-32">
       <div className="container">
