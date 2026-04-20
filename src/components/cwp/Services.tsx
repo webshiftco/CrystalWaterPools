@@ -48,7 +48,7 @@ export const Services = () => {
       <div className="container">
         <motion.div
           {...(isMobile
-            ? {}
+            ? { initial: false as const }
             : {
                 initial: { opacity: 0, y: 24 },
                 whileInView: { opacity: 1, y: 0 },
