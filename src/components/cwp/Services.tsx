@@ -56,7 +56,7 @@ export const Services = () => {
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
           {services.map((s, i) => (
             <motion.article
               key={s.title}
@@ -64,9 +64,9 @@ export const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="group relative overflow-hidden rounded-3xl bg-card shadow-soft border border-border hover:-translate-y-2 hover:shadow-pool transition-all duration-500"
+              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-card shadow-soft border border-border hover:-translate-y-2 hover:shadow-pool transition-all duration-500"
             >
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-32 sm:h-56 overflow-hidden">
                 <img
                   src={s.img}
                   alt={s.title}
@@ -74,20 +74,20 @@ export const Services = () => {
                   className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="inline-flex items-center justify-center h-10 px-3 rounded-full bg-white text-xs font-bold uppercase tracking-wider text-foreground shadow-soft">
+                <div className="absolute top-2 left-2 sm:top-4 sm:left-4">
+                  <span className="inline-flex items-center justify-center h-6 sm:h-10 px-2 sm:px-3 rounded-full bg-white text-[10px] sm:text-xs font-bold uppercase tracking-wider text-foreground shadow-soft">
                     Step {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <div className="absolute bottom-4 right-4">
+                <div className="hidden sm:block absolute bottom-4 right-4">
                   <span className="inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent-foreground">
                     {String(i + 1).padStart(2, "0")} of {String(services.length).padStart(2, "0")}
                   </span>
                 </div>
               </div>
-              <div className="p-7">
-                <h3 className="font-display text-2xl font-semibold text-foreground flex items-center gap-2"><span aria-hidden>{s.emoji}</span>{s.title}</h3>
-                <p className="mt-2 text-muted-foreground">{s.desc}</p>
+              <div className="p-3 sm:p-7">
+                <h3 className="font-display text-sm sm:text-2xl font-semibold text-foreground flex items-center gap-1 sm:gap-2"><span aria-hidden>{s.emoji}</span><span>{s.title}</span></h3>
+                <p className="mt-1 sm:mt-2 text-xs sm:text-base text-muted-foreground">{s.desc}</p>
               </div>
             </motion.article>
           ))}
