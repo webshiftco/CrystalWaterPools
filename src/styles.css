@@ -204,3 +204,15 @@
   to { transform: translateX(-50%); }
 }
 .animate-marquee { animation: marquee 30s linear infinite; }
+
+/* Wave drift — translate a 1440-wide tile leftwards by exactly one tile for seamless loop */
+@keyframes wave-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-1440px); }
+}
+@keyframes wave-drift-reverse {
+  from { transform: translateX(-1440px); }
+  to   { transform: translateX(0); }
+}
+.animate-wave-slow    { animation: wave-drift 18s linear infinite; }
+.animate-wave-slower  { animation: wave-drift-reverse 28s linear infinite; }
