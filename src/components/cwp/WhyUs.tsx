@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Droplets, Sparkles, Clock, ShieldCheck } from "lucide-react";
 
 const items = [
