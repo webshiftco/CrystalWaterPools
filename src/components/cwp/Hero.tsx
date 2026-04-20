@@ -65,7 +65,7 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container flex min-h-[100svh] flex-col justify-end pb-32 md:justify-center md:pb-0 md:pt-28">
+      <div className="relative z-10 container flex min-h-[100svh] flex-col justify-end pb-32 pt-24 md:justify-center md:pb-0 md:pt-28">
         <motion.div
           key={`text-${i}`}
           initial={{ opacity: 0, y: 16 }}
