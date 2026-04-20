@@ -140,17 +140,31 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Decorative bottom divider */}
-      <svg
-        viewBox="0 0 1440 60"
-        className="absolute -bottom-[1px] left-0 z-10 w-full text-background"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0,60 L0,30 Q60,0 120,30 T240,30 T360,30 T480,30 T600,30 T720,30 T840,30 T960,30 T1080,30 T1200,30 T1320,30 T1440,30 L1440,60 Z"
-          fill="currentColor"
-        />
-      </svg>
+      {/* Decorative animated waves */}
+      <div className="pointer-events-none absolute -bottom-[1px] left-0 z-10 w-full overflow-hidden text-background" aria-hidden>
+        {/* Back wave — slower, slightly transparent for depth */}
+        <svg
+          viewBox="0 0 4320 60"
+          className="block h-[60px] w-[300%] opacity-60 animate-wave-slower"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,60 L0,32 Q90,2 180,32 T360,32 T540,32 T720,32 T900,32 T1080,32 T1260,32 T1440,32 T1620,32 T1800,32 T1980,32 T2160,32 T2340,32 T2520,32 T2700,32 T2880,32 T3060,32 T3240,32 T3420,32 T3600,32 T3780,32 T3960,32 T4140,32 T4320,32 L4320,60 Z"
+            fill="currentColor"
+          />
+        </svg>
+        {/* Front wave */}
+        <svg
+          viewBox="0 0 4320 60"
+          className="-mt-[60px] block h-[60px] w-[300%] animate-wave-slow"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,60 L0,30 Q60,0 120,30 T240,30 T360,30 T480,30 T600,30 T720,30 T840,30 T960,30 T1080,30 T1200,30 T1320,30 T1440,30 T1560,30 T1680,30 T1800,30 T1920,30 T2040,30 T2160,30 T2280,30 T2400,30 T2520,30 T2640,30 T2760,30 T2880,30 T3000,30 T3120,30 T3240,30 T3360,30 T3480,30 T3600,30 T3720,30 T3840,30 T3960,30 T4080,30 T4200,30 T4320,30 L4320,60 Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
     </section>
   );
 };
