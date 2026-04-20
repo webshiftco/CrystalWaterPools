@@ -145,7 +145,7 @@ export const Hero = () => {
         {/* Back wave — slower, slightly transparent for depth */}
         <svg
           viewBox="0 0 4320 60"
-          className="block h-[60px] w-[300%] opacity-60 animate-wave-slower"
+          className="block h-[40px] md:h-[60px] w-[600%] sm:w-[400%] md:w-[300%] opacity-60 animate-wave-slower"
           preserveAspectRatio="none"
         >
           <path
@@ -156,7 +156,7 @@ export const Hero = () => {
         {/* Front wave */}
         <svg
           viewBox="0 0 4320 60"
-          className="-mt-[60px] block h-[60px] w-[300%] animate-wave-slow"
+          className="-mt-[40px] md:-mt-[60px] block h-[40px] md:h-[60px] w-[600%] sm:w-[400%] md:w-[300%] animate-wave-slow"
           preserveAspectRatio="none"
         >
           <path

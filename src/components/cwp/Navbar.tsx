@@ -30,10 +30,10 @@ export const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <nav className="container flex items-center justify-between py-4">
-        <a href="#top" className="flex items-center gap-3">
-          <div className="rounded-full bg-primary px-4 py-2 shadow-soft ring-1 ring-white/30">
-            <img src={logo} alt="Crystal Water Pools logo" className="h-9 w-auto brightness-0 invert" />
+      <nav className="container flex items-center justify-between gap-3 py-3 md:py-4">
+        <a href="#top" className="flex items-center gap-3 min-w-0 shrink">
+          <div className="rounded-full bg-primary px-3 py-1.5 md:px-4 md:py-2 shadow-soft ring-1 ring-white/30">
+            <img src={logo} alt="Crystal Water Pools logo" className="h-7 md:h-9 w-auto brightness-0 invert" />
           </div>
         </a>
 
@@ -74,7 +74,7 @@ export const Navbar = () => {
 
         <button
           onClick={() => setOpen(!open)}
-          className={`lg:hidden p-2 rounded-full ${scrolled ? "text-foreground bg-secondary" : "text-white bg-white/15 backdrop-blur"}`}
+          className={`lg:hidden shrink-0 p-2 rounded-full ${scrolled ? "text-foreground bg-secondary" : "text-white bg-white/15 backdrop-blur"}`}
           aria-label="Toggle menu"
         >
           {open ? <X /> : <Menu />}
