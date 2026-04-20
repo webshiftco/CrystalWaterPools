@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import s1 from "@/assets/cwp/s1.jpg";
 import s5 from "@/assets/cwp/s5.jpg";
 import s11 from "@/assets/cwp/s11.jpg";
