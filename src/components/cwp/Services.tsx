@@ -36,7 +36,7 @@ export const Services = () => {
   const isMobile = useIsMobile();
   const anim = (delay = 0) =>
     isMobile
-      ? {}
+      ? { initial: false as const }
       : {
           initial: { opacity: 0, y: 30 },
           whileInView: { opacity: 1, y: 0 },
