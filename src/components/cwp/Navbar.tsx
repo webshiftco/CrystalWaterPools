@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/cwp/logo.png";
 import { Button } from "@/components/ui/button";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#why" },
-  { label: "Process", href: "#process" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Why Us", href: "/#why" },
+  { label: "Process", href: "/#process" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Gallery", to: "/gallery" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const Navbar = () => {
@@ -31,14 +33,27 @@ export const Navbar = () => {
       }`}
     >
       <nav className="container flex items-center justify-between gap-3 py-3 md:py-4">
-        <a href="#top" className="flex items-center gap-3 min-w-0 shrink">
+        <Link to="/" className="flex items-center gap-3 min-w-0 shrink">
           <div className="rounded-full bg-primary px-3 py-1.5 md:px-4 md:py-2 shadow-soft ring-1 ring-white/30">
             <img src={logo} alt="Crystal Water Pools logo" className="h-7 md:h-9 w-auto brightness-0 invert" />
           </div>
-        </a>
+        </Link>
 
         <div className="hidden lg:flex items-center gap-1">
           {links.map((l) => (
+            l.to ? (
+              <Link
+                key={l.to}
+                to={l.to}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all ${
+                  scrolled
+                    ? "text-foreground/80 hover:text-primary hover:bg-secondary"
+                    : "text-white/90 hover:text-white hover:bg-white/15 backdrop-blur"
+                }`}
+              >
+                {l.label}
+              </Link>
+            ) : (
             <a
               key={l.href}
               href={l.href}
@@ -50,6 +65,7 @@ export const Navbar = () => {
             >
               {l.label}
             </a>
+            )
           ))}
         </div>
 
@@ -85,14 +101,25 @@ export const Navbar = () => {
         <div className="lg:hidden bg-background border-t border-border">
           <div className="container py-4 flex flex-col gap-2">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="px-3 py-2.5 rounded-lg text-foreground/80 hover:text-primary hover:bg-secondary font-medium"
-              >
-                {l.label}
-              </a>
+              l.to ? (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  onClick={() => setOpen(false)}
+                  className="px-3 py-2.5 rounded-lg text-foreground/80 hover:text-primary hover:bg-secondary font-medium"
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="px-3 py-2.5 rounded-lg text-foreground/80 hover:text-primary hover:bg-secondary font-medium"
+                >
+                  {l.label}
+                </a>
+              )
             ))}
             <Button asChild className="rounded-full gradient-sunset text-accent-foreground mt-2">
               <a href="#contact" onClick={() => setOpen(false)}>Free Estimate</a>
