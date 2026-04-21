@@ -1,37 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/cwp/Navbar";
 import { Footer } from "@/components/cwp/Footer";
-import s1 from "@/assets/cwp/s1.jpg";
-import s5 from "@/assets/cwp/s5.jpg";
-import s11 from "@/assets/cwp/s11.jpg";
-import s12 from "@/assets/cwp/s12.jpg";
-import s13 from "@/assets/cwp/s13.jpg";
-import s14 from "@/assets/cwp/s14.jpg";
-import src6 from "@/assets/cwp/src6.jpg";
-import src7 from "@/assets/cwp/src7.jpg";
-import src8 from "@/assets/cwp/src8.jpg";
-import src9 from "@/assets/cwp/src9.jpg";
-import src10 from "@/assets/cwp/src10.jpg";
-import src12 from "@/assets/cwp/src12.jpg";
-import src13 from "@/assets/cwp/src13.jpg";
-import src14 from "@/assets/cwp/src14.jpg";
 
-const galleryImages = [
-  { src: s1, alt: "Custom backyard pool with bright blue water" },
-  { src: s5, alt: "Residential swimming pool with stone patio" },
-  { src: s11, alt: "Luxury backyard pool installation" },
-  { src: s12, alt: "Poolside lounge area beside a custom pool" },
-  { src: s13, alt: "Clear blue swimming pool with backyard landscaping" },
-  { src: s14, alt: "Finished backyard pool by Crystal Water Pools" },
-  { src: src6, alt: "Pool construction progress view" },
-  { src: src7, alt: "Custom pool project with fresh water finish" },
-  { src: src8, alt: "Backyard pool project detail" },
-  { src: src9, alt: "Pool renovation and patio project" },
-  { src: src10, alt: "Custom pool with surrounding deck" },
-  { src: src12, alt: "Completed residential pool project" },
-  { src: src13, alt: "Crystal Water Pools backyard installation" },
-  { src: src14, alt: "Clean custom pool design for a family backyard" },
-];
+const galleryImages = Object.entries(
+  import.meta.glob("../assets/cwp/gallery/*.{jpg,jpeg,png,webp}", {
+    eager: true,
+    import: "default",
+    query: "?url",
+  }),
+)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src], index) => ({
+    src: src as string,
+    alt: `Crystal Water Pools gallery project photo ${index + 1}`,
+  }));
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -46,8 +28,8 @@ export const Route = createFileRoute("/gallery")({
         property: "og:description",
         content: "See custom pool projects and backyard transformations from Crystal Water Pools.",
       },
-      { property: "og:image", content: s1 },
-      { name: "twitter:image", content: s1 },
+      { property: "og:image", content: galleryImages[0]?.src },
+      { name: "twitter:image", content: galleryImages[0]?.src },
     ],
   }),
   component: GalleryPage,
