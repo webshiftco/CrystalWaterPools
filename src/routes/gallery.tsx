@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { Navbar } from "@/components/cwp/Navbar";
 import { Footer } from "@/components/cwp/Footer";
 
@@ -36,6 +37,8 @@ export const Route = createFileRoute("/gallery")({
 });
 
 function GalleryPage() {
+  const [expandedImage, setExpandedImage] = useState<(typeof galleryImages)[number] | null>(null);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -55,18 +58,57 @@ function GalleryPage() {
           {galleryImages.map((image, index) => (
             <figure
               key={image.src}
-              className={`overflow-hidden rounded-xl bg-card shadow-soft ${index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
+              className={`group relative overflow-hidden rounded-xl bg-card shadow-soft ${index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                loading={index < 4 ? "eager" : "lazy"}
-                className="h-full min-h-40 w-full object-cover transition-transform duration-500 hover:scale-105 md:min-h-64"
-              />
+              <button
+                type="button"
+                onClick={() => setExpandedImage(image)}
+                className="block h-full w-full cursor-zoom-in text-left"
+                aria-label={`Expand ${image.alt}`}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading={index < 4 ? "eager" : "lazy"}
+                  className="h-full min-h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:min-h-64"
+                />
+              </button>
+              <button
+                type="button"
+                onClick={() => setExpandedImage(image)}
+                className="absolute bottom-3 right-3 rounded-full bg-background/85 px-3 py-2 text-xs font-bold uppercase tracking-wide text-foreground shadow-soft backdrop-blur transition-opacity md:opacity-0 md:group-hover:opacity-100"
+                aria-label={`Zoom ${image.alt}`}
+              >
+                Zoom
+              </button>
             </figure>
           ))}
         </div>
       </section>
+      {expandedImage ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4 backdrop-blur-md"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded gallery image"
+          onClick={() => setExpandedImage(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setExpandedImage(null)}
+            className="absolute right-4 top-4 rounded-full bg-card px-4 py-2 text-sm font-bold text-card-foreground shadow-soft"
+            aria-label="Close expanded image"
+          >
+            Close
+          </button>
+          <img
+            src={expandedImage.src}
+            alt={expandedImage.alt}
+            className="max-h-[86vh] max-w-full rounded-xl object-contain shadow-soft"
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      ) : null}
       <Footer />
     </main>
   );
