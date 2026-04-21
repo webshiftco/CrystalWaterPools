@@ -141,7 +141,7 @@ export const Hero = () => {
       </div>
 
       {/* Decorative animated waves */}
-      <div className="pointer-events-none absolute -bottom-[1px] left-0 z-10 w-full overflow-hidden text-primary" aria-hidden>
+      <div className="pointer-events-none absolute -bottom-[2px] left-0 z-10 w-full overflow-hidden text-accent" aria-hidden>
         {/* Back wave — slower, slightly transparent for depth */}
         <svg
           viewBox="0 0 4320 60"
