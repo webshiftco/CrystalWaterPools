@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { Navbar } from "@/components/cwp/Navbar";
 import { Footer } from "@/components/cwp/Footer";
 
@@ -16,28 +16,17 @@ const galleryImages = Object.entries(
     alt: `Crystal Water Pools gallery project photo ${index + 1}`,
   }));
 
-export const Route = createFileRoute("/gallery")({
-  head: () => ({
-    meta: [
-      { title: "Pool Gallery — Crystal Water Pools" },
-      {
-        name: "description",
-        content: "Browse Crystal Water Pools project photos, custom backyard pools, renovations, patios, and finished pool designs.",
-      },
-      { property: "og:title", content: "Pool Gallery — Crystal Water Pools" },
-      {
-        property: "og:description",
-        content: "See custom pool projects and backyard transformations from Crystal Water Pools.",
-      },
-      { property: "og:image", content: galleryImages[0]?.src },
-      { name: "twitter:image", content: galleryImages[0]?.src },
-    ],
-  }),
-  component: GalleryPage,
-});
-
-function GalleryPage() {
+export default function Gallery() {
   const [expandedImage, setExpandedImage] = useState<(typeof galleryImages)[number] | null>(null);
+
+  useDocumentMeta({
+    title: "Pool Gallery — Crystal Water Pools",
+    description:
+      "Browse Crystal Water Pools project photos, custom backyard pools, renovations, patios, and finished pool designs.",
+    ogTitle: "Pool Gallery — Crystal Water Pools",
+    ogDescription: "See custom pool projects and backyard transformations from Crystal Water Pools.",
+    ogImage: galleryImages[0]?.src,
+  });
 
   return (
     <main className="min-h-screen bg-background text-foreground">

@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { Navbar } from "@/components/cwp/Navbar";
 import { Hero } from "@/components/cwp/Hero";
 import { Marquee } from "@/components/cwp/Marquee";
@@ -10,26 +12,23 @@ import { Contact } from "@/components/cwp/Contact";
 import { Footer } from "@/components/cwp/Footer";
 import { Toaster } from "@/components/ui/sonner";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-  head: () => ({
-    meta: [
-      { title: "Crystal Water Pools — Sunny Backyard Paradise in Atlanta" },
-      {
-        name: "description",
-        content:
-          "Custom-built backyard pools in Atlanta since 2001. Bright designs, hassle-free service, and 20+ years of happy summers.",
-      },
-      { property: "og:title", content: "Crystal Water Pools — Sunny Backyard Paradise" },
-      {
-        property: "og:description",
-        content: "Bright, custom backyard pools across Atlanta. Free estimates, zero pressure.",
-      },
-    ],
-  }),
-});
+export default function Index() {
+  const { hash } = useLocation();
 
-function Index() {
+  useDocumentMeta({
+    title: "Crystal Water Pools — Sunny Backyard Paradise in Atlanta",
+    description:
+      "Custom-built backyard pools in Atlanta since 2001. Bright designs, hassle-free service, and 20+ years of happy summers.",
+    ogTitle: "Crystal Water Pools — Sunny Backyard Paradise",
+    ogDescription: "Bright, custom backyard pools across Atlanta. Free estimates, zero pressure.",
+  });
+
+  useEffect(() => {
+    if (!hash) return;
+    const el = document.querySelector(hash);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }, [hash]);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
