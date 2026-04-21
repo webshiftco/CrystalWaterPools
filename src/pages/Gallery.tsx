@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { Navbar } from "@/components/cwp/Navbar";
 import { Footer } from "@/components/cwp/Footer";
 
@@ -19,21 +19,17 @@ const galleryImages = Object.entries(
 export default function Gallery() {
   const [expandedImage, setExpandedImage] = useState<(typeof galleryImages)[number] | null>(null);
 
+  useDocumentMeta({
+    title: "Pool Gallery — Crystal Water Pools",
+    description:
+      "Browse Crystal Water Pools project photos, custom backyard pools, renovations, patios, and finished pool designs.",
+    ogTitle: "Pool Gallery — Crystal Water Pools",
+    ogDescription: "See custom pool projects and backyard transformations from Crystal Water Pools.",
+    ogImage: galleryImages[0]?.src,
+  });
+
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Helmet>
-        <title>Pool Gallery — Crystal Water Pools</title>
-        <meta
-          name="description"
-          content="Browse Crystal Water Pools project photos, custom backyard pools, renovations, patios, and finished pool designs."
-        />
-        <meta property="og:title" content="Pool Gallery — Crystal Water Pools" />
-        <meta
-          property="og:description"
-          content="See custom pool projects and backyard transformations from Crystal Water Pools."
-        />
-        {galleryImages[0]?.src ? <meta property="og:image" content={galleryImages[0].src} /> : null}
-      </Helmet>
       <Navbar />
       <section className="gradient-sky pt-28 pb-12 md:pt-36 md:pb-16">
         <div className="container">

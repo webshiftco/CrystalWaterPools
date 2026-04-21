@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { Navbar } from "@/components/cwp/Navbar";
 import { Hero } from "@/components/cwp/Hero";
 import { Marquee } from "@/components/cwp/Marquee";
@@ -15,6 +15,14 @@ import { Toaster } from "@/components/ui/sonner";
 export default function Index() {
   const { hash } = useLocation();
 
+  useDocumentMeta({
+    title: "Crystal Water Pools — Sunny Backyard Paradise in Atlanta",
+    description:
+      "Custom-built backyard pools in Atlanta since 2001. Bright designs, hassle-free service, and 20+ years of happy summers.",
+    ogTitle: "Crystal Water Pools — Sunny Backyard Paradise",
+    ogDescription: "Bright, custom backyard pools across Atlanta. Free estimates, zero pressure.",
+  });
+
   useEffect(() => {
     if (!hash) return;
     const el = document.querySelector(hash);
@@ -23,18 +31,6 @@ export default function Index() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Helmet>
-        <title>Crystal Water Pools — Sunny Backyard Paradise in Atlanta</title>
-        <meta
-          name="description"
-          content="Custom-built backyard pools in Atlanta since 2001. Bright designs, hassle-free service, and 20+ years of happy summers."
-        />
-        <meta property="og:title" content="Crystal Water Pools — Sunny Backyard Paradise" />
-        <meta
-          property="og:description"
-          content="Bright, custom backyard pools across Atlanta. Free estimates, zero pressure."
-        />
-      </Helmet>
       <Navbar />
       <Hero />
       <Marquee />
