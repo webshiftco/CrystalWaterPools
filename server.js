@@ -14,7 +14,7 @@ const port = Number(process.env.PORT || 3000);
 app.use(compression());
 app.use(express.static(distDir, { extensions: ["html"] }));
 
-app.get("*", (req, res, next) => {
+app.use((req, res, next) => {
   if (path.extname(req.path)) {
     next();
     return;
