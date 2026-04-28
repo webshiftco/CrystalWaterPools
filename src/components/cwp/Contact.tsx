@@ -121,27 +121,27 @@ export const Contact = () => {
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <Label htmlFor="name">Name *</Label>
-              <Input id="name" required className="mt-2 rounded-xl h-11" placeholder="Your full name" />
+              <Input id="name" name="name" required className="mt-2 rounded-xl h-11" placeholder="Your full name" />
             </div>
             <div>
               <Label htmlFor="zip">Zip Code *</Label>
-              <Input id="zip" required className="mt-2 rounded-xl h-11" placeholder="30041" />
+              <Input id="zip" name="zip" required className="mt-2 rounded-xl h-11" placeholder="30041" />
             </div>
             <div className="sm:col-span-2">
               <Label htmlFor="address">Address *</Label>
-              <Input id="address" required className="mt-2 rounded-xl h-11" placeholder="Street address" />
+              <Input id="address" name="address" required className="mt-2 rounded-xl h-11" placeholder="Street address" />
             </div>
             <div>
               <Label htmlFor="email">Email *</Label>
-              <Input id="email" type="email" required className="mt-2 rounded-xl h-11" placeholder="name@example.com" />
+              <Input id="email" name="email" type="email" required className="mt-2 rounded-xl h-11" placeholder="name@example.com" />
             </div>
             <div>
               <Label htmlFor="phone">Phone *</Label>
-              <Input id="phone" type="tel" required className="mt-2 rounded-xl h-11" placeholder="(470) 555-0123" />
+              <Input id="phone" name="phone" type="tel" required className="mt-2 rounded-xl h-11" placeholder="(470) 555-0123" />
             </div>
             <div className="sm:col-span-2">
               <Label htmlFor="message">Project Details *</Label>
-              <Textarea id="message" rows={4} required className="mt-2 rounded-xl" placeholder="Tell us about your project..." />
+              <Textarea id="message" name="message" rows={4} required className="mt-2 rounded-xl" placeholder="Tell us about your project..." />
             </div>
           </div>
           <Button
