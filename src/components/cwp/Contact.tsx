@@ -36,9 +36,16 @@ export const Contact = () => {
       form.reset();
     } catch (err) {
       console.error(err);
-      toast.error("Could not send request", {
-        description: "Please try again, or call us at 470.281.5693.",
-      });
+      const context = typeof err === "object" && err !== null && "context" in err ? (err as { context?: Response }).context : undefined;
+      if (context?.status === 503) {
+        toast.error("Email setup is still finishing", {
+          description: "DNS verification is still pending. Please call us at 470.281.5693 for now.",
+        });
+      } else {
+        toast.error("Could not send request", {
+          description: "Please try again, or call us at 470.281.5693.",
+        });
+      }
     } finally {
       setSubmitting(false);
     }
