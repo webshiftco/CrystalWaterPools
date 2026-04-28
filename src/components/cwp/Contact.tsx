@@ -6,20 +6,42 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || "").trim(),
+      email: String(fd.get("email") || "").trim(),
+      phone: String(fd.get("phone") || "").trim(),
+      address: String(fd.get("address") || "").trim(),
+      zip: String(fd.get("zip") || "").trim(),
+      message: String(fd.get("message") || "").trim(),
+    };
+
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: payload,
+      });
+      if (error) throw error;
       toast.success("Request received", {
         description: "Thank you. Our team will be in touch shortly to schedule your estimate.",
       });
-      (e.target as HTMLFormElement).reset();
-    }, 700);
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      toast.error("Could not send request", {
+        description: "Please try again, or call us at 470.281.5693.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
