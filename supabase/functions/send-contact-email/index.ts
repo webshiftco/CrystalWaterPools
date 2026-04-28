@@ -94,6 +94,7 @@ Deno.serve(async (req) => {
       });
     }
 
+    const idempotencyKey = `contact-${crypto.randomUUID()}`;
     const emailRequest = {
       to: TO_ADDRESS,
       from: FROM_ADDRESS,
@@ -103,6 +104,7 @@ Deno.serve(async (req) => {
       html: buildHtml(payload),
       text: buildText(payload),
       purpose: "transactional",
+      idempotency_key: idempotencyKey,
     };
 
     const res = await fetch(LOVABLE_API_URL, {
