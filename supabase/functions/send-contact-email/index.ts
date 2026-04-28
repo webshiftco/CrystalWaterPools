@@ -13,6 +13,13 @@ const SENDER_DOMAIN = "notify.crystalwaterpoolsinga.com";
 const FROM_ADDRESS = `Crystal Water Pools <noreply@${SENDER_DOMAIN}>`;
 const TO_ADDRESS = "crystalwaterpoolsinga@gmail.com";
 
+function jsonResponse(body: Record<string, unknown>, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+}
+
 interface ContactPayload {
   name: string;
   email: string;
@@ -77,10 +84,7 @@ Deno.serve(async (req) => {
     const required: (keyof ContactPayload)[] = ["name", "email", "phone", "address", "zip", "message"];
     for (const k of required) {
       if (!body[k] || typeof body[k] !== "string" || !String(body[k]).trim()) {
-        return new Response(JSON.stringify({ error: `Missing field: ${k}` }), {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        return jsonResponse({ error: `Missing field: ${k}` }, 400);
       }
     }
     const payload = body as ContactPayload;
@@ -88,10 +92,7 @@ Deno.serve(async (req) => {
     const apiKey = Deno.env.get("LOVABLE_API_KEY");
     if (!apiKey) {
       console.error("LOVABLE_API_KEY missing");
-      return new Response(JSON.stringify({ error: "Email not configured" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return jsonResponse({ error: "Email not configured" }, 500);
     }
 
     const idempotencyKey = `contact-${crypto.randomUUID()}`;
@@ -118,23 +119,33 @@ Deno.serve(async (req) => {
 
     if (!res.ok) {
       const errText = await res.text();
+      let apiError: { type?: string; message?: string } = {};
+      try {
+        apiError = JSON.parse(errText);
+      } catch {
+        apiError = { message: errText };
+      }
+
+      if (apiError.type === "domain_not_verified") {
+        console.warn("Email domain pending verification", SENDER_DOMAIN);
+        return jsonResponse(
+          {
+            error: "Email setup is still finishing",
+            code: "domain_not_verified",
+            message: "The sender domain is still pending DNS verification.",
+          },
+          503,
+        );
+      }
+
       console.error("Email API error", res.status, errText);
-      return new Response(JSON.stringify({ error: "Failed to send email" }), {
-        status: 502,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return jsonResponse({ error: "Failed to send email" }, 502);
     }
 
     const data = await res.json();
-    return new Response(JSON.stringify({ success: true, message_id: data.message_id }), {
-      status: 200,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return jsonResponse({ success: true, message_id: data.message_id });
   } catch (err) {
     console.error("send-contact-email error", err);
-    return new Response(JSON.stringify({ error: "Internal error" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return jsonResponse({ error: "Internal error" }, 500);
   }
 });
