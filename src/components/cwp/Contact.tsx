@@ -26,10 +26,16 @@ export const Contact = () => {
 
     setSubmitting(true);
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
         body: payload,
       });
       if (error) throw error;
+      if (data?.code === "domain_not_verified") {
+        toast.error("Email setup is still finishing", {
+          description: "DNS verification is still pending. Please call us at 470.281.5693 for now.",
+        });
+        return;
+      }
       toast.success("Request received", {
         description: "Thank you. Our team will be in touch shortly to schedule your estimate.",
       });
