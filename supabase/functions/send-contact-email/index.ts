@@ -142,6 +142,7 @@ Deno.serve(async (req) => {
       subject: `New estimate request from ${payload.name}`,
       html: buildHtml(payload),
       text: buildText(payload),
+      purpose: "transactional",
       idempotency_key: idempotencyKey,
       unsubscribe_token: unsubscribeToken,
     };
