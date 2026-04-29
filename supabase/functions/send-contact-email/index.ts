@@ -134,7 +134,7 @@ Deno.serve(async (req) => {
     }
 
     const idempotencyKey = `contact-${crypto.randomUUID()}`;
-    const emailRequest = {
+    const emailRequest: Record<string, unknown> = {
       to: TO_ADDRESS,
       from: FROM_ADDRESS,
       sender_domain: SENDER_DOMAIN,
@@ -142,7 +142,6 @@ Deno.serve(async (req) => {
       subject: `New estimate request from ${payload.name}`,
       html: buildHtml(payload),
       text: buildText(payload),
-      purpose: "transactional",
       idempotency_key: idempotencyKey,
       unsubscribe_token: unsubscribeToken,
     };
