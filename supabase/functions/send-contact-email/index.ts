@@ -159,6 +159,7 @@ Deno.serve(async (req) => {
 
     if (!res.ok) {
       const errText = await res.text();
+      console.error("Sent payload keys:", Object.keys(emailRequest), "token len:", unsubscribeToken?.length);
       let apiError: { type?: string; message?: string } = {};
       try {
         apiError = JSON.parse(errText);
