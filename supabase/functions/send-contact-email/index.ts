@@ -130,11 +130,12 @@ Deno.serve(async (req) => {
         console.warn("Email domain pending verification", SENDER_DOMAIN);
         return jsonResponse(
           {
+            success: false,
             error: "Email setup is still finishing",
             code: "domain_not_verified",
             message: "The sender domain is still pending DNS verification.",
           },
-          503,
+          200,
         );
       }
 
