@@ -96,6 +96,7 @@ Deno.serve(async (req) => {
     }
 
     const idempotencyKey = `contact-${crypto.randomUUID()}`;
+    const unsubscribeToken = crypto.randomUUID();
     const emailRequest = {
       to: TO_ADDRESS,
       from: FROM_ADDRESS,
@@ -106,6 +107,7 @@ Deno.serve(async (req) => {
       text: buildText(payload),
       purpose: "transactional",
       idempotency_key: idempotencyKey,
+      unsubscribe_token: unsubscribeToken,
     };
 
     const res = await fetch(LOVABLE_API_URL, {
