@@ -101,6 +101,51 @@ export type Database = {
         }
         Relationships: []
       }
+      estimate_requests: {
+        Row: {
+          address: string
+          created_at: string
+          email: string
+          email_error: string | null
+          email_status: string
+          id: string
+          last_attempt_at: string | null
+          message: string
+          name: string
+          phone: string
+          send_attempts: number
+          zip: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          email: string
+          email_error?: string | null
+          email_status?: string
+          id?: string
+          last_attempt_at?: string | null
+          message: string
+          name: string
+          phone: string
+          send_attempts?: number
+          zip: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          email?: string
+          email_error?: string | null
+          email_status?: string
+          id?: string
+          last_attempt_at?: string | null
+          message?: string
+          name?: string
+          phone?: string
+          send_attempts?: number
+          zip?: string
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string
@@ -125,6 +170,24 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -138,6 +201,13 @@ export type Database = {
       enqueue_email: {
         Args: { payload: Json; queue_name: string }
         Returns: number
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
       }
       move_to_dlq: {
         Args: {
@@ -158,7 +228,7 @@ export type Database = {
       }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -285,6 +355,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
