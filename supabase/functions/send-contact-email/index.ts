@@ -8,7 +8,7 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-const LOVABLE_API_URL = "https://api.lovable.dev/v1/messaging/email/send";
+import { EmailAPIError, sendLovableEmail } from "npm:@lovable.dev/email-js@0.4.0";
 const SENDER_DOMAIN = "notify.crystalwaterpoolsinga.com";
 const FROM_ADDRESS = `Crystal Water Pools <noreply@${SENDER_DOMAIN}>`;
 const TO_ADDRESS = "crystalwaterpoolsinga@gmail.com";
@@ -90,102 +90,52 @@ Deno.serve(async (req) => {
     const payload = body as ContactPayload;
 
     const apiKey = Deno.env.get("LOVABLE_API_KEY");
-    const supabaseUrl = Deno.env.get("SUPABASE_URL");
-    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-    if (!apiKey || !supabaseUrl || !serviceRoleKey) {
+    if (!apiKey) {
       console.error("Email config missing");
       return jsonResponse({ error: "Email not configured" }, 500);
     }
 
-    // Upsert an unsubscribe token for the recipient (one per email address).
-    let unsubscribeToken: string | null = null;
     try {
-      const tokenRes = await fetch(`${supabaseUrl}/rest/v1/email_unsubscribe_tokens?on_conflict=email`, {
-        method: "POST",
-        headers: {
-          apikey: serviceRoleKey,
-          Authorization: `Bearer ${serviceRoleKey}`,
-          "Content-Type": "application/json",
-          Prefer: "resolution=merge-duplicates,return=representation",
+      await sendLovableEmail(
+        {
+          to: TO_ADDRESS,
+          from: FROM_ADDRESS,
+          sender_domain: SENDER_DOMAIN,
+          reply_to: payload.email,
+          subject: `New estimate request from ${payload.name}`,
+          html: buildHtml(payload),
+          text: buildText(payload),
+          purpose: "transactional",
+          label: "contact-estimate-request",
+          idempotency_key: `contact-${crypto.randomUUID()}`,
         },
-        body: JSON.stringify({ email: TO_ADDRESS, token: crypto.randomUUID() }),
-      });
-      if (tokenRes.ok) {
-        const rows = await tokenRes.json();
-        unsubscribeToken = rows?.[0]?.token ?? null;
-      }
-      if (!unsubscribeToken) {
-        // Fallback: read existing token
-        const getRes = await fetch(
-          `${supabaseUrl}/rest/v1/email_unsubscribe_tokens?email=eq.${encodeURIComponent(TO_ADDRESS)}&select=token`,
-          { headers: { apikey: serviceRoleKey, Authorization: `Bearer ${serviceRoleKey}` } },
-        );
-        if (getRes.ok) {
-          const rows = await getRes.json();
-          unsubscribeToken = rows?.[0]?.token ?? null;
+        { apiKey, sendUrl: Deno.env.get("LOVABLE_SEND_URL") },
+      );
+    } catch (error) {
+      if (error instanceof EmailAPIError) {
+        if (error.code === "recipient_suppressed") {
+          console.warn("Owner address is suppressed");
+          return jsonResponse({ success: false, code: "recipient_suppressed" }, 200);
         }
+        if (error.code === "domain_not_verified") {
+          return jsonResponse(
+            {
+              success: false,
+              error: "Email setup is still finishing",
+              code: "domain_not_verified",
+              message: "The sender domain is still pending DNS verification.",
+            },
+            200,
+          );
+        }
+        console.error("Email API error", error.status, error.code);
+      } else {
+        console.error("Email send error", error);
       }
-    } catch (e) {
-      console.error("Unsubscribe token error", e);
-    }
-
-    if (!unsubscribeToken) {
-      return jsonResponse({ error: "Failed to prepare unsubscribe token" }, 500);
-    }
-
-    const idempotencyKey = `contact-${crypto.randomUUID()}`;
-    const emailRequest: Record<string, unknown> = {
-      to: TO_ADDRESS,
-      from: FROM_ADDRESS,
-      sender_domain: SENDER_DOMAIN,
-      reply_to: payload.email,
-      subject: `New estimate request from ${payload.name}`,
-      html: buildHtml(payload),
-      text: buildText(payload),
-      purpose: "transactional",
-      idempotency_key: idempotencyKey,
-      unsubscribe_token: unsubscribeToken,
-    };
-
-    const res = await fetch(LOVABLE_API_URL, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-        "Idempotency-Key": idempotencyKey,
-      },
-      body: JSON.stringify(emailRequest),
-    });
-
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error("Sent payload keys:", Object.keys(emailRequest), "token len:", unsubscribeToken?.length);
-      let apiError: { type?: string; message?: string } = {};
-      try {
-        apiError = JSON.parse(errText);
-      } catch {
-        apiError = { message: errText };
-      }
-
-      if (apiError.type === "domain_not_verified") {
-        console.warn("Email domain pending verification", SENDER_DOMAIN);
-        return jsonResponse(
-          {
-            success: false,
-            error: "Email setup is still finishing",
-            code: "domain_not_verified",
-            message: "The sender domain is still pending DNS verification.",
-          },
-          200,
-        );
-      }
-
-      console.error("Email API error", res.status, errText);
       return jsonResponse({ error: "Failed to send email" }, 502);
     }
 
-    const data = await res.json();
-    return jsonResponse({ success: true, message_id: data.message_id });
+    return jsonResponse({ success: true });
   } catch (err) {
     console.error("send-contact-email error", err);
     return jsonResponse({ error: "Internal error" }, 500);
